@@ -1,0 +1,17 @@
+{
+    "name": "polem/departements",
+    "authors": [
+        {
+            "name": "Paul-Emile MINY",
+            "email": "paulemile.miny@gmail.com"
+        }
+    ],
+    "require": {
+        "phpcollection/phpcollection": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Departements\\": "src/Departements"
+        }
+    }
+}
