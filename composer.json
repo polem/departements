@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "phpcollection/phpcollection": "*"
+        "phpcollection/phpcollection": "0.3.1"
     },
     "autoload": {
         "psr-4": {
