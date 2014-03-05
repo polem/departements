@@ -1,0 +1,20 @@
+{
+    "21": {
+        "name": "Champagne-Ardenne",
+        "depts": {
+            "51": "Marne",
+            "10": "Aube",
+            "08": "Ardennes",
+            "52": "Haute-Marne"
+        }
+    },
+    "22": {
+        "name": "Picardie",
+        "depts": {
+            "60": "Oise",
+            "80": "Somme",
+            "02": "Aisne"
+        }
+    }
+}
+

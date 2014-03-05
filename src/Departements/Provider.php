@@ -4,61 +4,40 @@ namespace Departements;
 
 use Departements\Model\Region;
 use Departements\Model\Departement;
+use Departements\Datasource\DatasourceInterface;
 use PhpCollection\Map;
 
 class Provider
 {
-    private $regions;
-    private $departements;
+    private $datasource;
 
-    public function __construct()
+    public function __construct(DatasourceInterface $datasource)
     {
-        $this->regions = new Map();
-        $this->departements = new Map();
-
-        $this->loadDatas();
+        $this->datasource = $datasource;
     }
 
     public function findAllDepartements() {
-        return $this->departements;
+        return $this->datasource->findAllDepartements();
     }
 
     public function findAllRegions() {
-        return $this->regions;
+        return $this->datasource->findAllRegions();
     }
 
     public function findDepartementByCode($departementCode) {
-        return $this->regions;
+        return $this->datasource->findDepartementByCode($departementCode);
     }
 
     public function findDepartementByName($departementCode) {
-        return $this->regions;
+        return $this->datasource->findDepartementByName($departementCode);
     }
 
     public function findRegionByName($regionCode) {
-        return $this->regions;
+        return $this->datasource->findRegionByName($regionCode);
     }
 
     public function findRegionByCode($regionCode) {
-        return $this->regions;
-    }
-
-    private function loadDatas() {
-
-        $datas = json_decode(file_get_contents(__DIR__ . '/Resources/datas/datas.json'), true);
-        foreach($datas as $regionCode => $regionDatas) {
-            $region = new Region();
-            $region->setCode($regionCode);
-            $region->setName($regionDatas['name']);
-            foreach($regionDatas['depts'] as $deptCode => $deptName) {
-                $departement = new Departement();
-                $departement->setCode($deptCode);
-                $departement->setName($deptName);
-                $region->addDepartement($departement);
-                $this->departements->set($deptCode, $departement);
-            }
-            $this->regions->set($regionCode, $region);
-        }
+        return $this->datasource->findRegionByCode($regionCode);
     }
 }
 
