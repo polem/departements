@@ -9,7 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "phpcollection/phpcollection": "0.3.1"
+        "phpcollection/phpcollection": "~0.3.1"
     },
     "autoload": {
         "psr-4": {
