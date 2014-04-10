@@ -40,5 +40,10 @@ class Departement
         $this->region = $region;
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
 }
 
