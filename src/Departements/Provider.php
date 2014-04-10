@@ -2,10 +2,7 @@
 
 namespace Departements;
 
-use Departements\Model\Region;
-use Departements\Model\Departement;
 use Departements\Datasource\DatasourceInterface;
-use PhpCollection\Map;
 
 class Provider
 {

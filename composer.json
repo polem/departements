@@ -1,11 +1,13 @@
 {
     "name": "polem/departements",
+    "description" : "Simple french departments and areas library",
     "authors": [
         {
             "name": "Paul-Emile MINY",
             "email": "paulemile.miny@gmail.com"
         }
     ],
+    "license": "MIT",
     "require": {
         "phpcollection/phpcollection": "0.3.1"
     },

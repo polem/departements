@@ -4,7 +4,6 @@ namespace Departements\Datasource;
 
 use Departements\Model\Region;
 use Departements\Model\Departement;
-use PhpCollection\Map;
 
 class JsonDatasource extends AbstractDatasource implements DatasourceInterface
 {
@@ -56,7 +55,6 @@ class JsonDatasource extends AbstractDatasource implements DatasourceInterface
     }
 
     private function loadDatas() {
-        $regions = array();
         $datas = json_decode(file_get_contents($this->file), true);
         foreach($datas as $regionCode => $regionDatas) {
             $region = new Region();
