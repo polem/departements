@@ -8,50 +8,12 @@ use Departements\Model\Departement;
 class JsonDatasource extends AbstractDatasource implements DatasourceInterface
 {
     private $file;
-    private $departementNameIndex;
-    private $regionNameIndex;
 
     public function __construct($file)
     {
         parent::__construct();
         $this->file = $file;
         $this->loadDatas();
-    }
-
-    public function findAllDepartements() {
-        return $this->departements;
-    }
-
-    public function findAllRegions() {
-        return $this->regions;
-    }
-
-    public function findDepartementByCode($departementCode) {
-        return $this->departements->get($departementCode)->get();
-    }
-
-    public function findDepartementByName($departementName) {
-        if(!isset($this->departementNameIndex[$departementName])) {
-            return null;
-        }
-
-        $departementCode = $this->departementNameIndex[$departementName];
-
-        return $this->departements->get($departementCode)->get();
-    }
-
-    public function findRegionByName($regionName) {
-        if(!isset($this->regionNameIndex[$regionName])) {
-            return null;
-        }
-
-        $regionCode = $this->regionNameIndex[$regionName];
-
-        return $this->regions->get($regionCode)->get();
-    }
-
-    public function findRegionByCode($regionCode) {
-        return $this->regions->get($regionCode)->get();
     }
 
     private function loadDatas() {
@@ -67,10 +29,11 @@ class JsonDatasource extends AbstractDatasource implements DatasourceInterface
                 $departement->setRegion($region);
 
                 $region->addDepartement($departement);
-                $this->departementNameIndex[$deptName] = $deptCode;
+
+                $this->addToIndex('departements', $deptName, $deptCode);
                 $this->departements->set($deptCode, $departement);
             }
-            $this->regionNameIndex[$regionDatas['name']] = $regionCode;
+            $this->addToIndex('regions', $region->getName(), $regionCode);
             $this->regions->set($regionCode, $region);
         }
     }
