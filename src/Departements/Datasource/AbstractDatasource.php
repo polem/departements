@@ -37,7 +37,7 @@ abstract class AbstractDatasource implements DatasourceInterface
     }
 
     public function findDepartementByCode($departementCode) {
-        return $this->departements->get($departementCode)->get();
+        return $this->departements->get($departementCode)->getOrElse(null);
     }
 
     public function findDepartementByName($departementName) {
@@ -65,7 +65,7 @@ abstract class AbstractDatasource implements DatasourceInterface
     }
 
     public function findRegionByCode($regionCode) {
-        return $this->regions->get($regionCode)->get();
+        return $this->regions->get($regionCode)->getOrElse(null);
     }
 }
 
