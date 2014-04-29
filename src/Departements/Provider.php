@@ -25,12 +25,12 @@ class Provider
         return $this->datasource->findDepartementByCode($departementCode);
     }
 
-    public function findDepartementByName($departementCode) {
-        return $this->datasource->findDepartementByName($departementCode);
+    public function findDepartementByName($departementName) {
+        return $this->datasource->findDepartementByName($departementName);
     }
 
-    public function findRegionByName($regionCode) {
-        return $this->datasource->findRegionByName($regionCode);
+    public function findRegionByName($regionName) {
+        return $this->datasource->findRegionByName($regionName);
     }
 
     public function findRegionByCode($regionCode) {
