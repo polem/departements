@@ -28,12 +28,20 @@ abstract class AbstractDatasource implements DatasourceInterface
         $this->index[$type][$this->slugify($value)] = $key;
     }
 
-    public function findAllDepartements() {
-        return $this->departements;
+    public function findAllDepartements($sortByValue = false) {
+        if (!$sortByValue) {
+            return $this->departements;
+        }
+
+        return $this->sortByValue($this->departements);
     }
 
-    public function findAllRegions() {
-        return $this->regions;
+    public function findAllRegions($sortByValue = false) {
+        if (!$sortByValue) {
+            return $this->regions;
+        }
+
+        return $this->sortByValue($this->regions);
     }
 
     public function findDepartementByCode($departementCode) {
@@ -66,6 +74,15 @@ abstract class AbstractDatasource implements DatasourceInterface
 
     public function findRegionByCode($regionCode) {
         return $this->regions->get($regionCode)->getOrElse(null);
+    }
+
+    protected function sortByValue($collection) {
+        $collator = new \Collator('fr_FR');
+
+        $items = iterator_to_array($collection);
+        $collator->asort($items);
+
+        return new Map($items);
     }
 }
 

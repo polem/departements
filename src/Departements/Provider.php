@@ -4,6 +4,8 @@ namespace Departements;
 
 use Departements\Datasource\DatasourceInterface;
 
+use PhpCollection\Map;
+
 class Provider
 {
     private $datasource;
@@ -13,12 +15,12 @@ class Provider
         $this->datasource = $datasource;
     }
 
-    public function findAllDepartements() {
-        return $this->datasource->findAllDepartements();
+    public function findAllDepartements($sortByValue = null) {
+        return $this->datasource->findAllDepartements($sortByValue);
     }
 
-    public function findAllRegions() {
-        return $this->datasource->findAllRegions();
+    public function findAllRegions($sortByValue = null) {
+        return $this->datasource->findAllRegions($sortByValue);
     }
 
     public function findDepartementByCode($departementCode) {
@@ -36,5 +38,6 @@ class Provider
     public function findRegionByCode($regionCode) {
         return $this->datasource->findRegionByCode($regionCode);
     }
+
 }
 

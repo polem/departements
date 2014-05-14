@@ -40,6 +40,24 @@ class JsonDatasourceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotNull($dept1);
         $this->assertEquals($dept1->getName(), 'Marne');
+
+        // test all departement sorted by names
+        $collection = $this->object->findAllDepartements(true);
+
+        list($code, $firstElement) = $collection->first()->get();
+        list($code, $lastElement) = $collection->last()->get();
+
+        $this->assertEquals($firstElement->getName(), 'Aisne');
+        $this->assertEquals($lastElement->getName(), 'Somme');
+
+        // test all departement not sorted by names
+        $collection = $this->object->findAllDepartements(false);
+
+        list($code, $firstElement) = $collection->first()->get();
+        list($code, $lastElement) = $collection->last()->get();
+
+        $this->assertEquals($firstElement->getName(), 'Marne');
+        $this->assertEquals($lastElement->getName(), 'Aisne');
     }
 
     /**
