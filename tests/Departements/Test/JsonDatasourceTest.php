@@ -61,6 +61,17 @@ class JsonDatasourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Departements\Datasource\JsonDatasource::findAllCommunes
+     */
+    public function testFindAllCommunes()
+    {
+        $commune1 = $this->object->findAllCommunes()->get('51000')->get();
+
+        $this->assertNotNull($commune1[0]);
+        $this->assertEquals($commune1[0]->getName(), 'Châlons-en-Champagne');
+    }
+
+    /**
      * @covers Departements\Datasource\JsonDatasource::findAllRegions
      */
     public function testFindAllRegions()
