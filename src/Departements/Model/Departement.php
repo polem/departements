@@ -2,11 +2,19 @@
 
 namespace Departements\Model;
 
+use PhpCollection\Sequence;
+use PhpCollection\SequenceInterface;
+
 class Departement
 {
-    private $name;
-    private $code;
-    private $region;
+    protected $name;
+    protected $code;
+    protected $region;
+    protected $communes;
+
+    function __construct () {
+        $this->communes = new Sequence();
+    }
 
     public function getName()
     {
@@ -41,9 +49,24 @@ class Departement
         return $this;
     }
 
+    public function getCommunes()
+    {
+        return $this->communes;
+    }
+
+    public function addCommune(Commune $commune) {
+        $this->communes->add($commune);
+    }
+
+    public function setCommunes(SequenceInterface $communes)
+    {
+        $this->communes = $communes;
+    }
+
     public function __toString()
     {
         return $this->getName();
     }
+
 }
 

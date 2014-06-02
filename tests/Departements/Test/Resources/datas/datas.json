@@ -2,18 +2,49 @@
     "21": {
         "name": "Champagne-Ardenne",
         "depts": {
-            "51": "Marne",
-            "10": "Aube",
-            "08": "Ardennes",
-            "52": "Haute-Marne"
+            "51": {
+              "name" : "Marne",
+              "cities" : {
+                "51000": [
+                  "Ch\u00e2lons-en-Champagne"
+                ],
+                "51001": [
+                  "Ch\u00e2lons-en-Champagne"
+                ],
+                "51100": [
+                  "Reims"
+                ]
+              }
+            },
+            "10": {
+              "name" : "Aube",
+              "cities" : {}
+            },
+            "08": {
+              "name" : "Ardennes",
+              "cities" : {}
+            },
+            "52": {
+              "name" : "Haute-Marne",
+              "cities" : {}
+            }
         }
     },
     "22": {
         "name": "Picardie",
         "depts": {
-            "60": "Oise",
-            "80": "Somme",
-            "02": "Aisne"
+            "60": {
+              "name" : "Oise",
+              "cities" : {}
+            },
+            "80": {
+              "name" : "Somme",
+              "cities" : {}
+            },
+            "02": {
+              "name" : "Aisne",
+              "cities" : {}
+            }
         }
     }
 }
