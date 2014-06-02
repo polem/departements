@@ -50,6 +50,10 @@ abstract class AbstractDatasource implements DatasourceInterface
         return $this->communes;
     }
 
+    public function findCommunesByZipcode($zipcode) {
+       return $this->communes->get($zipcode)->get();
+    }
+
     public function findDepartementByCode($departementCode) {
         return $this->departements->get($departementCode)->getOrElse(null);
     }

@@ -6,6 +6,8 @@ use Departements\Model\Region;
 use Departements\Model\Departement;
 use Departements\Model\Commune;
 
+use PhpCollection\Sequence;
+
 class JsonDatasource extends AbstractDatasource implements DatasourceInterface
 {
     private $file;
@@ -33,11 +35,12 @@ class JsonDatasource extends AbstractDatasource implements DatasourceInterface
 
                 // add cities
                 foreach($deptDatas['cities'] as $zipcode => $cities) {
-                    $communes = array();
+                    $communes = new Sequence();
                     foreach($cities as $cityName) {
                         $commune = new Commune($cityName, $zipcode, $departement);
                         $this->addToIndex('communes', $cityName, $zipcode);
-                        $communes[] = $commune;
+                        $communes->add($commune);
+                        $departement->addCommune($commune);
                     }
                     $this->communes->set($zipcode, $communes);
                 }
