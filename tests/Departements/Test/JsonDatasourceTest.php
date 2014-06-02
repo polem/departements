@@ -61,6 +61,28 @@ class JsonDatasourceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers Departements\Datasource\JsonDatasource::findAllCommunes
+     */
+    public function testFindAllCommunes()
+    {
+        $commune1 = $this->object->findAllCommunes()->get('51000')->get();
+
+        $this->assertNotNull($commune1->first());
+        $this->assertEquals($commune1->first()->get()->getName(), 'Châlons-en-Champagne');
+    }
+
+    /**
+     * @covers Departements\Datasource\JsonDatasource::findAllCommunes
+     */
+    public function testFindCommunesByZipcode()
+    {
+        $results = $this->object->findCommunesByZipcode('51000');
+
+        $this->assertNotNull($results->first()->get());
+        $this->assertEquals($results->first()->get()->getName(), 'Châlons-en-Champagne');
+    }
+
+    /**
      * @covers Departements\Datasource\JsonDatasource::findAllRegions
      */
     public function testFindAllRegions()
@@ -91,6 +113,8 @@ class JsonDatasourceTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNotNull($dept1);
         $this->assertEquals($dept1->getCode(), '51');
+
+        $this->assertCount(3, $dept1->getCommunes());
     }
 
     /**

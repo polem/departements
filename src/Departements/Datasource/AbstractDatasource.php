@@ -11,11 +11,13 @@ abstract class AbstractDatasource implements DatasourceInterface
     protected $index;
 
     public function __construct() {
-        $this->regions = new Map();
+        $this->regions      = new Map();
         $this->departements = new Map();
+        $this->communes     = new Map();
         $this->index = array(
-            'departements'  => array(),
-            'regions'  => array()
+            'departements' => array(),
+            'regions'      => array(),
+            'communes'     => array()
         );
     }
 
@@ -42,6 +44,14 @@ abstract class AbstractDatasource implements DatasourceInterface
         }
 
         return $this->sortByValue($this->regions);
+    }
+
+    public function findAllCommunes() {
+        return $this->communes;
+    }
+
+    public function findCommunesByZipcode($zipcode) {
+       return $this->communes->get($zipcode)->get();
     }
 
     public function findDepartementByCode($departementCode) {
