@@ -22,7 +22,7 @@ abstract class AbstractDatasource implements DatasourceInterface
     }
 
     protected function slugify($value) {
-        $orginalLocale = setlocale(LC_ALL);
+        $orginalLocale = setlocale(LC_ALL, 0);
         setlocale(LC_ALL, "en_US.utf8");
         $value = strtolower(iconv('UTF-8', 'ASCII//TRANSLIT', $value));
         setlocale(LC_ALL, $orginalLocale);
