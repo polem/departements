@@ -33,6 +33,10 @@ class JsonDatasource extends AbstractDatasource implements DatasourceInterface
 
                 $region->addDepartement($departement);
 
+                if (!isset($deptDatas['cities'])) {
+                    $deptDatas['cities'] = array();
+                }
+                
                 // add cities
                 foreach($deptDatas['cities'] as $zipcode => $cities) {
                     $communes = new Sequence();
